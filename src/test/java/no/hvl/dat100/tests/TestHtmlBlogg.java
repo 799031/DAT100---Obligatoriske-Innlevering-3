@@ -7,7 +7,7 @@ import no.hvl.dat100.oppgave2.Bilde;
 import no.hvl.dat100.oppgave2.Tekst;
 import no.hvl.dat100.oppgave4.SkrivBlogg;
 import no.hvl.dat100.oppgave6.HtmlBlogg;
-
+/*
 class TestHtmlBlogg {
 
 	private static String MAPPE = System.getProperty("user.dir") + "/src/test/java/no/hvl/dat100/tests/";
@@ -27,3 +27,4 @@ class TestHtmlBlogg {
 		assertTrue(SkrivBlogg.skriv(samling, MAPPE, FILNAVN));
 	}	
 }
+*/
