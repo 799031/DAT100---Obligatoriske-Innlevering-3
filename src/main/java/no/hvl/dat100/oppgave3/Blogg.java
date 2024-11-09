@@ -5,52 +5,75 @@ import no.hvl.dat100.oppgave1.*;
 
 public class Blogg {
 
-	// TODO: objektvariable 
-
+	private Innlegg innlegg[];
+	private int antall;
+	
 	public Blogg() {
-		throw new UnsupportedOperationException(TODO.constructor("Blogg"));
+		innlegg = new Innlegg[20];
+		this.antall = 0;
 	}
 
 	public Blogg(int lengde) {
-		throw new UnsupportedOperationException(TODO.constructor("Blogg"));
+		innlegg = new Innlegg[lengde];
+		this.antall = 0;
 	}
 
 	public int getAntall() {
-		throw new UnsupportedOperationException(TODO.method());
+		return this.antall;
 	}
 	
 	public Innlegg[] getSamling() {
-		throw new UnsupportedOperationException(TODO.method());
-
+		return this.innlegg;
 	}
 	
 	public int finnInnlegg(Innlegg innlegg) {
-
-		throw new UnsupportedOperationException(TODO.method());
+		for(int i=0; i<antall; i++)
+			if(this.innlegg[i].erLik(innlegg))
+				return i;
+		return -1;
 	}
 
 	public boolean finnes(Innlegg innlegg) {
-		throw new UnsupportedOperationException(TODO.method());
+		return finnInnlegg(innlegg) != -1;
 	}
 
 	public boolean ledigPlass() {
-		throw new UnsupportedOperationException(TODO.method());
-
+		return innlegg.length != antall;
 	}
 	
 	public boolean leggTil(Innlegg innlegg) {
-
-		throw new UnsupportedOperationException(TODO.method());
+		
+		if(!ledigPlass())
+			return false;
+		
+		this.innlegg[antall] = innlegg;
+		antall++;
+		return true;
 	}
 	
 	public String toString() {
-		throw new UnsupportedOperationException(TODO.method());
+		String str = String.valueOf(getAntall()) + "\n";
+
+		for(int i = 0; i<antall; i++)
+			str += innlegg[i].toString();
+		return str;
 	}
 
+	
+	
+	
+	
 	// valgfrie oppgaver nedenfor
 	
 	public void utvid() {
-		throw new UnsupportedOperationException(TODO.method());
+		Innlegg temp[] = new Innlegg[innlegg.length];
+		
+		for(int i = 0; i<this.antall; i++)
+			temp[i] = innlegg[i];
+		
+		innlegg = new Innlegg[innlegg.length*2];
+		for(int i = 0; i<this.antall; i++)
+			innlegg[i] = temp[i];
 	}
 	
 	public boolean leggTilUtvid(Innlegg innlegg) {
@@ -61,7 +84,15 @@ public class Blogg {
 	
 	public boolean slett(Innlegg innlegg) {
 		
-		throw new UnsupportedOperationException(TODO.method());
+		int index = finnInnlegg(innlegg);
+		if(index == -1)
+			return false;
+		
+		this.antall--;
+		for(int i = index; i<this.antall; i++)
+			this.innlegg[i] = this.innlegg[i+1];
+		
+		return true;
 	}
 	
 	public int[] search(String keyword) {
@@ -70,3 +101,6 @@ public class Blogg {
 
 	}
 }
+
+
+
